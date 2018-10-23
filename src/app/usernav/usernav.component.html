@@ -17,7 +17,7 @@
               <div routerLink="newarticle">New Article</div>
           </div>
           <div class="col-sm-4">
-              <div >{{userName}} </div>
+              <div >{{userName | async}} </div>
           </div>
           <div class="col-sm-2">
               <div (click)="onLogout()"> logout</div>

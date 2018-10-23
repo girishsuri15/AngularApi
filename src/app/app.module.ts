@@ -33,7 +33,7 @@ import { TagComponent } from './componentHelper/tag/tag.component'
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(appRoutes),
+    RouterModule.forRoot(appRoutes,{useHash:true}),
     HttpClientModule,
     FormsModule
   ],
