@@ -11,6 +11,7 @@ export const  appRoutes: Routes = [
 {path:'signUp', component:AuthComponent},
 {path:'login',component:AuthComponent},
 {path:'newarticle',component:NewArticleComponent},
+{path:'newarticle/:slug',component:NewArticleComponent},
 {path:'myarticle',component:MyArticleComponent},
 {path:'article/:slug',component:ArticleFullComponent}
 ];

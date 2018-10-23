@@ -15,6 +15,7 @@ export class ArticleFullComponent implements OnInit {
   comment:any;
   user:string;
   isLoggedIn$: Observable<boolean>;  
+  isSubmiiting:boolean=false;
   constructor(private route:ActivatedRoute,private articleService:ArticleService,private auth :AuthService,private router:Router) { }
 
   ngOnInit() {
@@ -25,12 +26,7 @@ export class ArticleFullComponent implements OnInit {
     this.isLoggedIn$ = this.auth.isLoggedIn;
     this.user=this.auth.getUserName();
   }
-  submit(data:NgForm){
-    const slug=this.route.snapshot.params['slug'];
-    this.articleService.postRequest(data.value,slug).subscribe((data)=>{
-     this.getCommentData(slug);
-      })
-  }
+  
   getData(slug:string){
   this.articleService.getRequestFor('article',slug).subscribe((data)=>{
     this.feed=data.article;
@@ -39,7 +35,6 @@ export class ArticleFullComponent implements OnInit {
 getCommentData(slug:string){
   this.articleService.getRequestFor('articlecomment',slug).subscribe((data)=>{
     console.log(data);
-    
     console.log(this.user);
     this.comment=data.comments;
     if(this.comment.length==0){
@@ -47,24 +42,33 @@ getCommentData(slug:string){
     }
   });
 }
-
+submit(data:NgForm,body:any){
+  const slug=this.route.snapshot.params['slug'];
+ this.isSubmiiting=true;
+  this.articleService.postRequest(data.value,slug).subscribe((dataFromServer)=>{
+   this.getCommentData(slug);
+   body.value="";
+   this.isSubmiiting=false;
+    })
+}
 authPageShow(value:string){
   this.router.navigateByUrl('/'+value);
 }
 deleteArticle(slug:string){
   ///api/articles/:slug
   this.articleService.delete("/articles/"+slug).subscribe((data)=>{
-    console.log(data);
     this.router.navigateByUrl("home");  
 });
 }
 deleteComment(slug:string,id:string){
   // /api/articles/:slug/comments/:id
-  console.log(slug+""+id)
   this.articleService.delete("/articles/"+slug+"/comments/"+id).subscribe((data)=>{
-    console.log(data);
     this.getCommentData(slug);
 });
+}
+editArticle(slug:string){
+    console.log(slug);
+    this.router.navigateByUrl("newarticle"+"/"+slug);
 }
 
 }

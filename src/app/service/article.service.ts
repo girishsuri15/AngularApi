@@ -60,4 +60,19 @@ export class ArticleService {
     obser= this.http.delete(App_Prop.app_url+parameter,httpcontent);
     return obser; 
   }
+  putArticle(resource:string,keys:any,dataParam:any):Observable<any>{
+    let obser: Observable<any>;
+    let body:any={article:dataParam};
+    const httpOptions = {
+        headers: new HttpHeaders({
+        "Content-Type": "application/json",
+        Authorization: "Token" + " " + this.jwt.getToken()
+        })
+    };
+    if(resource==='updateArticle')
+      {
+        obser =this.http.put(App_Prop.url_newarticle+'/'+keys,body,httpOptions);
+       }
+    return obser;
+  }
 }

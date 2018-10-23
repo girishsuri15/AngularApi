@@ -1,64 +1,84 @@
-<div>
-    <div class="banner">
+<div>    
+  <div class="banner">
+    <div class="container">
+      <!-- banner for article start -->
       <div class="row">
-         <div class="imgbox col-sm-1">
-            <img src = {{feed.author.image}} class="imguser"> 
+        <div class="title col-sm-12">
+          {{feed.title}}
         </div>
       </div>
-        <div class="row">
-          <div class="Timeupdated col-sm-12">
+      <div class="row">
+        <div class="imgbox sizetext col-sm-1">
+            <img src = {{feed.author.image}} class="imguser"> 
+        </div>
+        <div class="col-sm-2">
+            {{feed.author.username}}
+        </div>
+        <div class="col-sm-2">
             {{feed.updatedAt | date}}
-          </div>
         </div>
-        <div class="row">
-          <div class="title col-sm-10">
-            {{feed.title}}
-          </div>
-         </div> 
-         <div *ngIf="user===feed.author.username" >
-           <div (click)="deleteArticle(feed.slug)">deletearticle</div>
-           </div>
-    </div>  
-    <div class="tag">
-        <div class="description ">
+        <!-- delete article button -->
+        <div *ngIf="user===feed.author.username" class="col-sm-4">
+          <div class="row">
+            <div (click)="editArticle(feed.slug)" class="col-sm-6">
+              <button type="button" class="btn btn-info">
+                   EditArticle
+              </button>
+            </div>
+            <div (click)="deleteArticle(feed.slug)" class="col-sm-6">
+              <button type="button" class="btn btn-danger">
+                   DeleteArticle
+              </button>
+            </div>
+           </div> 
+        </div>
+      </div>
+    </div> 
+  </div>
+  <div class="bodydesc ">
+    <div class=" container">
+      <div class="tag">
+         <div class="description ">
             {{feed.description}}
-        </div>
-    </div>  
-      <hr/>
-      <div *ngIf="isLoggedIn$ | async;else notLoggedIn" >
-      <div class="commentuser  margi">
-          <form #commentform="ngForm" (ngSubmit)="submit(commentform)">
-              <fieldset class="form-group">
+          </div>
+      </div>    
+    </div> 
+  </div>   
+  <div *ngIf="isLoggedIn$ | async;else notLoggedIn" class="row margi "  >
+    <div class="col-xs-12 col-md-8 offset-md-2">
+      <form #commentform="ngForm" (ngSubmit)="submit(commentform,body)" >
+        <fieldset class="form-group" [disabled]="isSubmitting">
                 <input
                   name="body"
-                  placeholder="comment"
+                  placeholder=" Write a comment"
                   class="form-control form-control-lg"
                   type="text"
                   ngModel 
+                  #body
                    />
               </fieldset>
-              <button class="btn btn-lg "  type="submit">  
-                  add</button>
-            </form>
-      </div>
-      </div>
-      <div *ngIf="comment" class="comment">
-          <div *ngFor="let item of comment">
-            <div class="margi">
-              <div class="card">
-                <div class="card-body">
-                     {{item.body}}
-                </div>
-                <div>
+              <button type="submit" class="btn btn-outline-info" [disabled]="isSubmitting">Post Comment</button>
+     </form>
+    </div>
+  </div>
+  <!-- comment exist -->
+  <div *ngIf="comment" class="comment margi">
+      <div *ngFor="let item of comment" class="margi">
+          <div class="card">
+              <div class="card-body">
+                  {{item.body}}
+                  <button  *ngIf="user===item.author.username" type="button" class="btn btn-danger rfloat" (click)="deleteComment(feed.slug,item.id)">delete</button>
+              </div>
+              <div class="card-footer text-muted">
                   {{item.author.username}}
-                  </div>
-                  <div *ngIf="user===item.author.username">
-                    <div (click)="deleteComment(feed.slug,item.id)">deletebutton</div>
-                    </div>
-            </div>
-          </div>
-          </div> 
+                </div>
+         </div>
       </div>
+  </div>
+
+
+  <!-- hhhh -->
+     
       <ng-template #notLoggedIn>
             <div class="row">
               <div class="col-sm-12">
@@ -68,7 +88,7 @@
                 </div>
             </div>
       </ng-template>
+</div>      
     
-  </div> 
   
   

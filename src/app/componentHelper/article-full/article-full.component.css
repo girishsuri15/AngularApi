@@ -19,24 +19,18 @@ a:hover{
     font-size: .8rem;
 }
 .title{
-font-family:"source sans pro", sans-serif;
-font-size:24px;
-font-weight:600;
-margin:8px 0px 5px 8px;
-
+font-size: 2.2rem;
+font-weight: 600;
 }
 .description{
     color: #434040;
-    margin:10px 10px 15px 10px;
-    font-size: 1rem;
-    line-height: 1.3rem;
-    font-weight:400;
+    font-family: 'source serif pro',serif;
+    font-size: 1.2rem;
+    line-height: 1.8rem;
+    margin-bottom: 2rem;
 }
 .tag{
-    margin: 2px 5px 2px 5px;
-    border: 1px solid black;
-    border-radius: 5px;
-    background-color: #69a74e;
+    margin:15px 0px 3px 0px;
 }
 .lfloat {
     float: left;
@@ -56,12 +50,16 @@ margin:8px 0px 5px 8px;
 .banner{
     color: #fff;
     background: #333;
-    margin-bottom:10px;
+    padding: 2rem 0;
 }
 a {
     color: #5cb85c;
     text-decoration: none;
 }
-.margi{
-    margin:1px 15px 1px 15px;
+.bodydesc{
+border-bottom: 2px solid black;
 }
+.margi{
+    margin-top:5px;
+}
+

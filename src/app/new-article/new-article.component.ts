@@ -9,15 +9,25 @@ import {Router,ActivatedRoute} from '@angular/router'
 })
 export class NewArticleComponent implements OnInit {
  isSubmittingProcess:boolean=false;
+ paramId:string;
   constructor(private articleService:ArticleService,private router:Router,private route:ActivatedRoute) { }
 
   ngOnInit() {
-   // const paramId: any = this.route.snapshot.params['slug'];
+    if(this.route.snapshot.params.hasOwnProperty('slug')){
+     this.paramId = this.route.snapshot.params['slug'];
+  }
+console.log(this.paramId);
   }
   submit(data:NgForm){
-    this.articleService.postRequest(data.value,'newArticle').subscribe((data)=>{
-     console.log(data);
-     this.router.navigateByUrl("home");
-    });
+    if(this.paramId==="" || this.paramId===undefined){
+        this.articleService.postRequest(data.value,'newArticle').subscribe((data)=>{
+        this.router.navigateByUrl("home");
+      });
+    }
+    else{
+      this.articleService.putArticle('updateArticle',this.paramId,data.value).subscribe((data)=>{
+        this.router.navigateByUrl("article/"+this.paramId);
+      });
+    }
   }
 }
