@@ -16,6 +16,7 @@ export class ArticleFullComponent implements OnInit {
   user:string;
   isLoggedIn$: Observable<boolean>;  
   isSubmiiting:boolean=false;
+  isDataAvailable:boolean;
   constructor(private route:ActivatedRoute,private articleService:ArticleService,private auth :AuthService,private router:Router) { }
 
   ngOnInit() {
@@ -34,12 +35,11 @@ export class ArticleFullComponent implements OnInit {
 }
 getCommentData(slug:string){
   this.articleService.getRequestFor('articlecomment',slug).subscribe((data)=>{
-    console.log(data);
-    console.log(this.user);
     this.comment=data.comments;
     if(this.comment.length==0){
         this.comment=false;
     }
+    this.isDataAvailable=true;
   });
 }
 submit(data:NgForm,body:any){
@@ -57,7 +57,7 @@ authPageShow(value:string){
 deleteArticle(slug:string){
   ///api/articles/:slug
   this.articleService.delete("/articles/"+slug).subscribe((data)=>{
-    this.router.navigateByUrl("home");  
+    this.router.navigateByUrl("myarticle");  
 });
 }
 deleteComment(slug:string,id:string){

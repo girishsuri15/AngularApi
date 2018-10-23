@@ -14,7 +14,8 @@ import { FormsModule } from '@angular/forms';
 import { NewArticleComponent } from './new-article/new-article.component';
 import { ArticleEditorComponent } from './article-editor/article-editor.component';
 import { ArticleFullComponent } from './componentHelper/article-full/article-full.component';
-import { MyArticleComponent } from './my-article/my-article.component'
+import { MyArticleComponent } from './my-article/my-article.component';
+import { TagComponent } from './componentHelper/tag/tag.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +28,8 @@ import { MyArticleComponent } from './my-article/my-article.component'
     NewArticleComponent,
     ArticleEditorComponent,
     ArticleFullComponent,
-    MyArticleComponent
+    MyArticleComponent,
+    TagComponent
   ],
   imports: [
     BrowserModule,

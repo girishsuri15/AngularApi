@@ -16,7 +16,7 @@ export class NewArticleComponent implements OnInit {
     if(this.route.snapshot.params.hasOwnProperty('slug')){
      this.paramId = this.route.snapshot.params['slug'];
   }
-console.log(this.paramId);
+
   }
   submit(data:NgForm){
     if(this.paramId==="" || this.paramId===undefined){

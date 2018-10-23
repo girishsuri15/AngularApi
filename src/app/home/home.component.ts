@@ -9,6 +9,7 @@ import { App_Prop } from '../app.properties';
 export class HomeComponent implements OnInit {
   compData:Array<object>;
   compCount:number;
+  tagName:string;
   isDataAvailable:boolean;
   constructor(private articleService:ArticleService) { }
 
@@ -21,6 +22,15 @@ export class HomeComponent implements OnInit {
       this.compCount=data.articlesCount;
       this.isDataAvailable=true;
     });
+  }
+  compDataTag(e){
+    console.log(e);
+    this.compData=e.comp;
+    this.tagName=e.tagName;
+  }
+  globalFeed(){
+    this.showNextPage(0);
+    this.tagName="";
   }
 
 }

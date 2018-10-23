@@ -9,12 +9,12 @@ import{Router} from '@angular/router';
 })
 export class UsernavComponent implements OnInit {
   isLoggedIn$: Observable<boolean>;  
-  userName:string;
+  userName:string=this.auth.getUserName();
   constructor(private auth:AuthService,private router:Router) { }
 
   ngOnInit() {
    this.isLoggedIn$ = this.auth.isLoggedIn;
-   this.userName=this.auth.getUserName();
+   //this.userName=this.auth.getUserName();
 
   }
   onLogout(){

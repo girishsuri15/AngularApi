@@ -1,9 +1,23 @@
 <app-nav></app-nav>
 <div class="container">
     <div  *ngIf="isDataAvailable; else unavailable">
-        <div>
-            <app-storyfeed *ngFor="let item of compData" [feed]="item"></app-storyfeed>
+        <div class="row mrg">
+            <div (click)="globalFeed()"class="col-sm-2 pointerOnhover">
+                global feed
+            </div>
+            <div class="col-sm-2 ">
+                {{tagName}}
+            </div>
         </div>
+        <div class="row">
+            <div class="col-sm-8">
+                <app-storyfeed *ngFor="let item of compData" [feed]="item"></app-storyfeed>
+            </div>
+           
+            <div class="col-sm-4">
+                 <app-tag (tagData)="compDataTag($event)"></app-tag>
+            </div>
+        </div>    
         <div>
             <app-story-next [TotalArticles]=compCount (PageNumber)="showNextPage($event)"></app-story-next>
         </div>

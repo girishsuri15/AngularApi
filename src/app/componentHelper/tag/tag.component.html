@@ -1,0 +1,15 @@
+<div *ngIf="isDataAvailable; else unavailable">
+<div>
+    <ul class="row">
+         <li class="card pointerOnhover mrg"  *ngFor="let tag of compData" (click)="openTagArticle(tag)" >
+          {{ tag }}
+        </li> 
+      </ul>
+</div>
+</div>
+<ng-template #unavailable> 
+    <div>
+        Loading tag
+    </div>
+</ng-template> 
+    

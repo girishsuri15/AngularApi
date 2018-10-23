@@ -1,4 +1,19 @@
-
- <div>
-    <app-storyfeed *ngFor="let item of compData" [feed]="item"></app-storyfeed>
+<div>
+   <div *ngIf="isDataAvailable; else unavailable">
+      <app-storyfeed *ngFor="let item of compData" [feed]="item"></app-storyfeed>
+  </div>
+<ng-template #unavailable> 
+    <div>
+        <div class="card">
+            <div class="card-header">
+              No-Aritcle Yet
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Add Some Aritcle</h5>
+              <p class="card-text">Add Aritcle and  share you thoughts and reads what other think about you</p>
+              <button (click)="openNewArticle()"class="btn btn-primary">Go start</button>
+            </div>
+          </div>
+    </div>
+</ng-template>     
 </div>

@@ -2,8 +2,10 @@
   <div class="row ">
     <div class="col-md-6  offset-md-3 col-xs-12">
       <h1 class="text-xs-center text-center">{{ title }}</h1>
-      <h3 *ngIf="userInputError">Your Input is Wrong</h3>
-      <h3 *ngIf="isUserExist">User is exist</h3>
+      <div *ngIf="authType === 'signUp'">
+        <h3 *ngIf="userInputError">Your Input is Wrong</h3>
+        <h3 *ngIf="isUserExist">User is exist</h3>
+      </div>
       <form #authform="ngForm" (ngSubmit)="submit(authform)">
           <fieldset [disabled]="isSubmittingProcess">
           <fieldset class="form-group">

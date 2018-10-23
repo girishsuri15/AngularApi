@@ -1,4 +1,4 @@
-<div>    
+<div *ngIf="isDataAvailable; else unavailable">    
   <div class="banner">
     <div class="container">
       <!-- banner for article start -->
@@ -88,7 +88,12 @@
                 </div>
             </div>
       </ng-template>
-</div>      
+</div>
+<ng-template #unavailable> 
+    <div>
+        getting your article...
+    </div>
+</ng-template>           
     
   
   

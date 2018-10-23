@@ -1,3 +1,10 @@
 .container{
     margin-top:5px;
 }
+.mrg{
+    margin-bottom: 8px;
+}
+.colorTag{
+    background-color: greenyellow;
+}
+.pointerOnhover{cursor: pointer;}

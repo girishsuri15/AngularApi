@@ -46,7 +46,12 @@ export class ArticleService {
     }
     else if(resource==='articlecomment')
       obser = this.http.get(App_Prop.url_newarticle+'/'+parameter+"/comments");
-      
+     else if(resource==='getTags') {
+       obser=this.http.get(App_Prop.app_url+"/tags");
+     }
+     else if(resource==='getTagsArticle'){
+       obser = this.http.get(App_Prop.url_newarticle+"?tag="+parameter);
+     }
     return obser;
   }
   delete(parameter:string):Observable<any>{
