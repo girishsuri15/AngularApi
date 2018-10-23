@@ -1,0 +1,47 @@
+
+<div class="container bg-faded">
+    <div class="row ">
+      <div class="col-md-6  offset-md-3 col-xs-12">
+        <form #articleform="ngForm" (ngSubmit)="submit(articleform)">
+            <fieldset [disabled]="isSubmittingProcess">
+            <fieldset class="form-group">
+              <input
+                name="title"
+                placeholder="ArticleTitle"
+                class="form-control form-control-lg"
+                type="text"
+                ngModel 
+                />
+            </fieldset>
+            <fieldset class="form-group">
+              <input
+                 name ="description"
+                placeholder="What this article About?"
+                class="form-control form-control-lg"
+                type="text"
+                ngModel/>
+            </fieldset>
+            <fieldset class="form-group">
+              <textarea
+                name="body"
+                placeholder="Write Your Article"
+                class="form-control form-control-lg"
+                type="text"
+                ngModel></textarea>
+            </fieldset>
+            <fieldset class="form-group">
+                <input
+                  name="tagList"
+                  placeholder="Enter Tag"
+                  class="form-control form-control-lg"
+                  type="text"
+                  ngModel />
+              </fieldset>
+            <button class="btn btn-lg btn-primary pull-xs-right"  type="submit">  
+              Publish Article
+            </button>
+           </fieldset> 
+        </form>
+      </div>
+    </div>
+    </div>

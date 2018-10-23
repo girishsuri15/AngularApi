@@ -1,0 +1,8 @@
+.card{
+    min-width: 50px;
+    min-height: 40px;
+    text-align: center;
+    padding-top: 5px;
+}
+.active{    background-color: green;}
+.pointerOnhover{cursor:pointer;}

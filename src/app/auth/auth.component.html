@@ -1,0 +1,42 @@
+<div class="container bg-faded">
+  <div class="row ">
+    <div class="col-md-6  offset-md-3 col-xs-12">
+      <h1 class="text-xs-center text-center">{{ title }}</h1>
+      <h3 *ngIf="userInputError">Your Input is Wrong</h3>
+      <h3 *ngIf="isUserExist">User is exist</h3>
+      <form #authform="ngForm" (ngSubmit)="submit(authform)">
+          <fieldset [disabled]="isSubmittingProcess">
+          <fieldset class="form-group">
+            <input
+              name="username"
+              placeholder="Username"
+              class="form-control form-control-lg"
+              type="text"
+              ngModel 
+              *ngIf="authType == 'signUp'" />
+          </fieldset>
+          <fieldset class="form-group">
+            <input
+               name ="email"
+              placeholder="Email"
+              class="form-control form-control-lg"
+              type="text"
+              ngModel/>
+          </fieldset>
+          <fieldset class="form-group">
+            <input
+            name="password"
+              placeholder="Password"
+              class="form-control form-control-lg"
+              type="password"
+              ngModel />
+          </fieldset>
+          <button class="btn btn-lg btn-primary pull-xs-right"  type="submit">  
+            {{ title }}
+          </button>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+  </div>
+  

@@ -1,0 +1,41 @@
+<div class="container bg-faded">
+  <div class="row">
+  <div class=" title col-sm-3">
+    Conduit
+  </div>
+  <div class="col-sm-9">
+      
+      <div *ngIf="isLoggedIn$ | async;else notLoggedIn"  class="row">
+        <div class="col-sm-2">
+                    <div routerLink="home">Home</div>
+        </div>   
+        <div class="col-sm-2">
+              <div routerLink="myarticle">MyArticle</div>
+          </div>  
+          <div class="col-sm-2">
+              <div routerLink="newarticle">New Article</div>
+          </div>
+          <div class="col-sm-4">
+              <div >{{userName}} </div>
+          </div>
+          <div class="col-sm-2">
+              <div (click)="onLogout()"> logout</div>
+          </div>
+      </div>
+      <ng-template #notLoggedIn>
+          <div class="row" >
+              <div class="col-sm-4">
+                  <div routerLink="home">Home </div>
+              </div>  
+              <div class="col-sm-4">
+                  <div routerLink="signUp">SignUp</div>
+              </div>
+              <div class="col-sm-4">
+                  <div routerLink="login"> Login</div>
+              </div>
+          </div>
+      </ng-template>
+    
+ </div>
+</div>
+</div>

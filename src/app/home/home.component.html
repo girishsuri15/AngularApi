@@ -1,0 +1,15 @@
+<div class="container">
+    <div  *ngIf="isDataAvailable; else unavailable">
+        <div>
+            <app-storyfeed *ngFor="let item of compData" [feed]="item"></app-storyfeed>
+        </div>
+        <div>
+            <app-story-next [TotalArticles]=compCount (PageNumber)="showNextPage($event)"></app-story-next>
+        </div>
+    </div>  
+    <ng-template #unavailable> 
+        <div>
+            Loading articles
+        </div>
+    </ng-template>     
+</div>

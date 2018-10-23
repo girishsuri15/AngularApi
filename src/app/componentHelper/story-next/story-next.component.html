@@ -1,0 +1,7 @@
+<div>
+<ul class="row">
+    <li class="card pointerOnhover"  *ngFor="let pageNumber of totalPages"  [ngClass]="{'active': pageNumber === currentPage}"  (click)="setPageTo(pageNumber)">
+      {{ pageNumber }}
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,74 @@
+<div>
+    <div class="banner">
+      <div class="row">
+         <div class="imgbox col-sm-1">
+            <img src = {{feed.author.image}} class="imguser"> 
+        </div>
+      </div>
+        <div class="row">
+          <div class="Timeupdated col-sm-12">
+            {{feed.updatedAt | date}}
+          </div>
+        </div>
+        <div class="row">
+          <div class="title col-sm-10">
+            {{feed.title}}
+          </div>
+         </div> 
+         <div *ngIf="user===feed.author.username" >
+           <div (click)="deleteArticle(feed.slug)">deletearticle</div>
+           </div>
+    </div>  
+    <div class="tag">
+        <div class="description ">
+            {{feed.description}}
+        </div>
+    </div>  
+      <hr/>
+      <div *ngIf="isLoggedIn$ | async;else notLoggedIn" >
+      <div class="commentuser  margi">
+          <form #commentform="ngForm" (ngSubmit)="submit(commentform)">
+              <fieldset class="form-group">
+                <input
+                  name="body"
+                  placeholder="comment"
+                  class="form-control form-control-lg"
+                  type="text"
+                  ngModel 
+                   />
+              </fieldset>
+              <button class="btn btn-lg "  type="submit">  
+                  add</button>
+            </form>
+      </div>
+      </div>
+      <div *ngIf="comment" class="comment">
+          <div *ngFor="let item of comment">
+            <div class="margi">
+              <div class="card">
+                <div class="card-body">
+                     {{item.body}}
+                </div>
+                <div>
+                  {{item.author.username}}
+                  </div>
+                  <div *ngIf="user===item.author.username">
+                    <div (click)="deleteComment(feed.slug,item.id)">deletebutton</div>
+                    </div>
+            </div>
+          </div>
+          </div> 
+      </div>
+      <ng-template #notLoggedIn>
+            <div class="row">
+              <div class="col-sm-12">
+                    <a (click)="authPageShow('signUp')">SignUp</a>
+                    <a (click)="authPageShow('login')"> Login</a>
+                    for the comment.
+                </div>
+            </div>
+      </ng-template>
+    
+  </div> 
+  
+  
